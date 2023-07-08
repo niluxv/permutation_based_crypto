@@ -4,9 +4,12 @@ members = [
     "crypto-permutation",
     "permutation-keccak",
     "permutation-xoodoo",
+    "deck-farfalle",
 ]
 
 resolver = "2"
 
 [patch.crates-io]
 crypto-permutation = { path = "crypto-permutation" }
+permutation-keccak = { path = "permutation-keccak" }
+permutation-xoodoo = { path = "permutation-xoodoo" }

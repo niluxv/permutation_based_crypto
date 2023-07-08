@@ -1,0 +1,31 @@
+[package]
+name = "deck-farfalle"
+version = "0.1.0"
+edition = "2021"
+keywords = ["farfalle", "kravatte", "xoofff", "crypto", "permutation-based-crypto"]
+categories = ["crytography", "no-std"]
+description = "Generic Farfalle construction and Kravatte and Xoofff instantiations in the `crypto-permutation` framework"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+rust-version = "1.65"
+repository = "https://github.com/niluxv/permutation_based_crypto"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = []
+# Derive potentially dangerous traits like `Debug` and `PartialEq` for structures containing secret
+# data. Use for tests/debugging only!
+debug = ["permutation-keccak?/debug", "permutation-xoodoo?/debug"]
+# Enable `kravatte` module containing the Kravatte instantiation of Farfalle.
+kravatte = ["dep:permutation-keccak"]
+# Enable `xoofff` module containing the Xoofff instantiation of Farfalle.
+xoofff = ["dep:permutation-xoodoo"]
+
+[dependencies]
+crypto-permutation = "0.1"
+permutation-keccak = { version = "0.1", optional = true }
+permutation-xoodoo = { version = "0.1", optional = true }
+
+[dev-dependencies]
+xoofff = "0.1"
