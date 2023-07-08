@@ -3,6 +3,7 @@
 members = [
     "crypto-permutation",
     "permutation-keccak",
+    "permutation-xoodoo",
 ]
 
 resolver = "2"
