@@ -1,0 +1,23 @@
+[package]
+name = "permutation-keccak"
+version = "0.1.0"
+edition = "2021"
+keywords = ["keccak-p", "keccak-f", "permutation", "crypto", "permutation-based-crypto"]
+categories = ["crytography", "no-std"]
+description = "Keccak-f and keccak-p permutations in the `crypto-permutation` framework"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+rust-version = "1.65"
+repository = "https://github.com/niluxv/permutation_based_crypto"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = []
+# Derive potentially dangerous traits like `Debug` and `PartialEq` for structures containing secret
+# data. Use for tests/debugging only!
+debug = []
+
+[dependencies]
+crypto-permutation = { version = "0.1", features = ["io_le_uint_slice", "io_uint_u64"] }
+keccak = "0.1"
