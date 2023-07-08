@@ -45,6 +45,7 @@
 //! is used.
 
 #![cfg_attr(not(feature = "std"), no_std)]
+#![allow(clippy::needless_lifetimes)]
 
 #[cfg(feature = "alloc")]
 extern crate alloc;

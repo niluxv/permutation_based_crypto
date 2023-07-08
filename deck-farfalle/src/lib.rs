@@ -34,6 +34,9 @@
 //! [`kravatte` python package]: https://pypi.org/project/kravatte
 //! [`xoofff` crate]: https://crates.io/crates/xoofff
 
+#![no_std]
+#![allow(clippy::needless_lifetimes)]
+
 use crypto_permutation::{DeckFunction, Permutation, PermutationState};
 
 mod input;

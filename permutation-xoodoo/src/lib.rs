@@ -10,6 +10,7 @@
 //! [Xoodoo]: https://keccak.team/xoodoo.html
 
 #![no_std]
+#![allow(clippy::needless_lifetimes)]
 
 use crypto_permutation::{Permutation, PermutationState};
 use xoodoo_p::{xoodoo, MAX_ROUNDS};

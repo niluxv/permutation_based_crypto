@@ -132,7 +132,7 @@ impl<'a, C: FarfalleConfig> Writer for InputWriter<'a, C> {
         let mut chunks = data.chunks_exact(C::State::SIZE);
         for chunk in &mut chunks {
             let mut block_writer = self.block.copy_writer();
-            block_writer.write_bytes(&chunk).unwrap();
+            block_writer.write_bytes(chunk).unwrap();
             block_writer.finish();
             self.process_block();
         }
@@ -141,7 +141,7 @@ impl<'a, C: FarfalleConfig> Writer for InputWriter<'a, C> {
         if !remainder.is_empty() {
             self.filled = remainder.len();
             let mut block_writer = self.block.copy_writer();
-            block_writer.write_bytes(&remainder).unwrap();
+            block_writer.write_bytes(remainder).unwrap();
             block_writer.finish();
         }
 

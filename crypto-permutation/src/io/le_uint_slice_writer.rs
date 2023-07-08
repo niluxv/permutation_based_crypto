@@ -39,7 +39,7 @@ macro_rules! impl_le_uint_slice_writer_core {
                 // We temporarily take ownership of `self.buffer` by swapping in an empty slice
                 // instead. We can then mutate `buffer` without changing the lifetime and swap
                 // it back in `self`.
-                let mut buffer: &'a mut [$uint] = core::mem::replace(&mut self.buffer, &mut []);
+                let mut buffer: &'a mut [$uint] = core::mem::take(&mut self.buffer);
                 buffer = &mut buffer[n..];
                 let _ = core::mem::replace(&mut self.buffer, buffer);
             }
@@ -140,7 +140,6 @@ macro_rules! impl_le_uint_slice_writer_core {
                     cold();
                     self.write_partial_block();
                 }
-                ()
             }
         }
     };

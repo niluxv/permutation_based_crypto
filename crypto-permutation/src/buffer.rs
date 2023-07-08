@@ -87,7 +87,7 @@ impl<'a> BufMut<'a> {
         'a: 'b,
         I: SliceIndex<[MaybeUninit<u8>], Output = [MaybeUninit<u8>]>,
     {
-        let mut buf = core::mem::replace(&mut self.buf, &mut []);
+        let mut buf = core::mem::take(&mut self.buf);
         buf = &mut buf[range];
         let _ = core::mem::replace(&mut self.buf, buf);
     }
@@ -113,7 +113,5 @@ impl<'a> Writer for BufMut<'a> {
     }
 
     /// No-op.
-    fn finish(self) -> Self::Return {
-        ()
-    }
+    fn finish(self) -> Self::Return {}
 }

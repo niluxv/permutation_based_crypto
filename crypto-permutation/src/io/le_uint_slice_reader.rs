@@ -38,7 +38,7 @@ macro_rules! impl_le_uint_slice_reader {
                 // We temporarily take ownership of `self.buffer` by swapping in an empty slice
                 // instead. We can then mutate `buffer` without changing the lifetime and swap
                 // it back in `self`.
-                let mut buffer: &'a [$uint] = core::mem::replace(&mut self.buffer, &mut []);
+                let mut buffer: &'a [$uint] = core::mem::take(&mut self.buffer);
                 buffer = &buffer[n..];
                 let _ = core::mem::replace(&mut self.buffer, buffer);
             }

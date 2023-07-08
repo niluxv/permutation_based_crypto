@@ -11,6 +11,7 @@
 //! [keccak-p]: https://keccak.team/keccakp.html
 
 #![no_std]
+#![allow(clippy::needless_lifetimes)]
 
 use crypto_permutation::{Permutation, PermutationState};
 use keccak::{f1600, keccak_p};
