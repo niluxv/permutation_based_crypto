@@ -10,6 +10,8 @@
 //! [`keccak` crate]: https://crates.io/crates/keccak
 //! [keccak-p]: https://keccak.team/keccakp.html
 
+#![no_std]
+
 use crypto_permutation::{Permutation, PermutationState};
 use keccak::{f1600, keccak_p};
 

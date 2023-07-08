@@ -9,6 +9,8 @@
 //! [`xoodoo-p` crate]: https://crates.io/crates/xoodoo-p
 //! [Xoodoo]: https://keccak.team/xoodoo.html
 
+#![no_std]
+
 use crypto_permutation::{Permutation, PermutationState};
 use xoodoo_p::{xoodoo, MAX_ROUNDS};
 
