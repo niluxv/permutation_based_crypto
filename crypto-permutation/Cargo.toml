@@ -1,0 +1,30 @@
+[package]
+name = "crypto-permutation"
+version = "0.1.0"
+edition = "2021"
+keywords = ["crypto", "permutation-based-crypto"]
+categories = ["crytography", "no-std"]
+description = "Permutation based cryptography framework; core traits"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+rust-version = "1.65"
+repository = "https://github.com/niluxv/permutation_based_crypto"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = []
+alloc = []
+std = ["alloc"]
+
+# Implement readers and writers for little endian unsigned integer slices.
+io_le_uint_slice = []
+
+# Select unsigned integer types for for the unsigned integer slice readers/writers.
+io_uint_u16 = []
+io_uint_u32 = []
+io_uint_u64 = []
+io_uint_u128 = []
+
+
+[dependencies]

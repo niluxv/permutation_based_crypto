@@ -1,0 +1,7 @@
+[workspace]
+
+members = [
+    "crypto-permutation",
+]
+
+resolver = "2"
