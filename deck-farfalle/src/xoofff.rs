@@ -101,7 +101,7 @@ pub type Xoofff = Farfalle<XoofffConfig>;
 #[cfg(test)]
 mod tests {
     use super::Xoofff;
-    use crypto_permutation::{BufMut, DeckFunction, Reader, Writer};
+    use crypto_permutation::{DeckFunction, Reader, Writer};
 
     struct XoofffTester {
         farfalle: Xoofff,
@@ -130,7 +130,7 @@ mod tests {
             assert!(self.state == XoofffState::Absorb);
             let mut writer = self.farfalle.input_writer();
             for data in slices.iter() {
-                writer.write_bytes(data);
+                writer.write_bytes(data).expect("writing message failed");
                 self.xoofff_crate.absorb(data);
             }
             writer.finish();
@@ -144,8 +144,10 @@ mod tests {
             let mut buf1 = vec![0; n];
             let mut buf2 = vec![0; n];
             {
-                let mut reader = self.farfalle_output_reader.as_mut().unwrap();
-                reader.write_to_buf((&mut buf1[..]).into());
+                let reader = self.farfalle_output_reader.as_mut().unwrap();
+                reader
+                    .write_to_buf((&mut buf1[..]).into())
+                    .expect("reading output stream failed");
                 self.xoofff_crate.squeeze(buf2.as_mut());
             }
             assert_eq!(buf1, buf2);
@@ -196,7 +198,7 @@ mod tests {
         let key = b"xoofff test key";
         let mut tester = XoofffTester::new(key);
         tester.input_str(&[b"hello world"]);
-        for i in 0..4 {
+        for _i in 0..4 {
             tester.squeeze_compare(32);
         }
     }
