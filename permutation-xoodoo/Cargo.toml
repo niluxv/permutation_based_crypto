@@ -2,7 +2,7 @@
 name = "permutation-xoodoo"
 version = "0.1.0"
 edition = "2021"
-keywords = ["xoodoo", "permutation", "crypto", "permutation-based-crypto"]
+keywords = ["xoodoo", "permutation", "crypto"]
 categories = ["crytography", "no-std"]
 description = "Xoodoo permutation in the `crypto-permutation` framework"
 readme = "README.md"

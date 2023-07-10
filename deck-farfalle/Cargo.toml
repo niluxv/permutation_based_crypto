@@ -2,7 +2,7 @@
 name = "deck-farfalle"
 version = "0.1.0"
 edition = "2021"
-keywords = ["farfalle", "kravatte", "xoofff", "crypto", "permutation-based-crypto"]
+keywords = ["farfalle", "kravatte", "xoofff", "crypto", "permutation"]
 categories = ["crytography", "no-std"]
 description = "Generic Farfalle construction and Kravatte and Xoofff instantiations in the `crypto-permutation` framework"
 readme = "README.md"

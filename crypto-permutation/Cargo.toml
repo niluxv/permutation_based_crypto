@@ -2,7 +2,7 @@
 name = "crypto-permutation"
 version = "0.1.0"
 edition = "2021"
-keywords = ["crypto", "permutation-based-crypto"]
+keywords = ["crypto", "permutation"]
 categories = ["crytography", "no-std"]
 description = "Permutation based cryptography framework; core traits"
 readme = "README.md"

@@ -2,7 +2,7 @@
 name = "permutation-keccak"
 version = "0.1.0"
 edition = "2021"
-keywords = ["keccak-p", "keccak-f", "permutation", "crypto", "permutation-based-crypto"]
+keywords = ["keccak-p", "keccak-f", "permutation", "crypto"]
 categories = ["crytography", "no-std"]
 description = "Keccak-f and keccak-p permutations in the `crypto-permutation` framework"
 readme = "README.md"
