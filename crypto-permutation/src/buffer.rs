@@ -64,6 +64,7 @@ impl<'a> BufMut<'a> {
         Ok(())
     }
 
+    #[must_use]
     pub fn reborrow<'b>(&'b mut self) -> BufMut<'b>
     where
         'a: 'b,
@@ -72,6 +73,7 @@ impl<'a> BufMut<'a> {
         BufMut { buf }
     }
 
+    #[must_use = "for inplace mutation use `restrict_inplace` instead"]
     pub fn restrict<'b, I>(&'b mut self, range: I) -> BufMut<'b>
     where
         'a: 'b,
