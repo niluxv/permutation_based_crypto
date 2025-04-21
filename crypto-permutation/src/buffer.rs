@@ -104,7 +104,7 @@ impl<'a> Writer for BufMut<'a> {
 
     fn skip(&mut self, n: usize) -> Result<(), WriteTooLargeError> {
         check_write_size(n, self.capacity())?;
-        self.restrict(n..);
+        self.restrict_inplace(n..);
         Ok(())
     }
 
