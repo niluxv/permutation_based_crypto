@@ -20,4 +20,3 @@ debug = []
 
 [dependencies]
 crypto-permutation = { version = "0.1", features = ["io_le_uint_slice", "io_uint_u32"] }
-xoodoo-p = "0.1"

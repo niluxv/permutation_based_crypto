@@ -2,19 +2,17 @@
 //!
 //! `Xoodoo: Permutation`
 //!
-//! Uses the [`xoodoo-p` crate] internally for the actual permutation
-//! invocation.
 //!
 //! [`crypto-permutation`]: https://crates.io/crates/crypto-permutation
-//! [`xoodoo-p` crate]: https://crates.io/crates/xoodoo-p
 //! [Xoodoo]: https://keccak.team/xoodoo.html
 
 #![no_std]
 #![allow(clippy::needless_lifetimes)]
 
 use crypto_permutation::{Permutation, PermutationState};
-use xoodoo_p::{xoodoo, MAX_ROUNDS};
 
+mod permutation;
+use permutation::{xoodoo, MAX_ROUNDS};
 mod state;
 pub use state::XoodooState;
 
@@ -36,3 +34,6 @@ impl<const ROUNDS: usize> Permutation for XoodooP<ROUNDS> {
         xoodoo::<ROUNDS>(state.get_state_mut());
     }
 }
+
+#[cfg(test)]
+mod tests;
