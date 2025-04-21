@@ -115,3 +115,68 @@ impl<'a> Writer for BufMut<'a> {
     /// No-op.
     fn finish(self) -> Self::Return {}
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn writer_write() {
+        let mut buf = [0; 3];
+        let mut bufmut = BufMut::from(&mut buf[..]);
+        bufmut.write_bytes(&[1, 2, 3]).unwrap();
+        assert_eq!(buf, [1, 2, 3]);
+    }
+
+    #[test]
+    fn writer_write_out_of_bounds() {
+        let mut buf = [0; 3];
+        let mut bufmut = BufMut::from(&mut buf[..]);
+        let res = bufmut.write_bytes(&[1, 2, 3, 4]);
+        assert!(res.is_err());
+        assert_eq!(buf, [0; 3]);
+    }
+
+    #[test]
+    fn writer_write_write() {
+        let mut buf = [0; 5];
+        let mut bufmut = BufMut::from(&mut buf[..]);
+        bufmut.write_bytes(&[1, 2]).unwrap();
+        bufmut.write_bytes(&[3]).unwrap();
+        assert_eq!(buf, [1, 2, 3, 0, 0]);
+    }
+
+    #[test]
+    fn writer_skip() {
+        let mut buf = [0; 3];
+        let mut bufmut = BufMut::from(&mut buf[..]);
+        bufmut.skip(3).unwrap();
+        assert_eq!(buf, [0; 3]);
+    }
+
+    #[test]
+    fn writer_skip_out_of_bounds() {
+        let mut buf = [0; 3];
+        let mut bufmut = BufMut::from(&mut buf[..]);
+        let res = bufmut.skip(4);
+        assert!(res.is_err());
+    }
+
+    #[test]
+    fn writer_skip_capacity() {
+        let mut buf = [0; 5];
+        let mut bufmut = BufMut::from(&mut buf[..]);
+        assert_eq!(bufmut.capacity(), 5);
+        bufmut.skip(2).unwrap();
+        assert_eq!(bufmut.capacity(), 3);
+    }
+
+    #[test]
+    fn writer_skip_write() {
+        let mut buf = [0; 5];
+        let mut bufmut = BufMut::from(&mut buf[..]);
+        bufmut.skip(2).unwrap();
+        bufmut.write_bytes(&[1, 1]).unwrap();
+        assert_eq!(buf, [0, 0, 1, 1, 0]);
+    }
+}
